@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon index.mjs"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.2.1",
+    "@fastify/one-line-logger": "^1.1.1",
+    "@fastify/static": "^6.9.0",
+    "axios": "^1.3.4",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

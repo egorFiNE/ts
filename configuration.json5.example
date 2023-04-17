@@ -1,0 +1,20 @@
+{
+  models: [
+    'sentence-transformers/all-MiniLM-L6-v2',
+    'sentence-transformers/all-roberta-large-v1'
+  ],
+
+  contexts: [
+    {
+      wordCount: 30,
+      leftoverWordCount: 13,
+      overlapWordCount: 5
+    }
+  ],
+
+  lectures: [
+    'bJczLlwp-d8', '0LaEmaMAkpM', 'Om_A5TTQMm0', 'zhCK5uGJ3Tw', '36XiKhamtQo', 'IlvE6tgPEf8', 'CMpkBOTCgCM', 'Bp495Uz_Cq4',
+    '_IBll--m7qI', 'Wdn0zcCXjQY', 'hde-2h5eEQI', 'WO_SuY-4Sow', 'Q9ciocrFK8w', '9JUzxdeYRZc', '1dy7Mrqy1AY', 'Pi0wyvuNn4A',
+    'zRdNxx295r8', 'k7nM9SetN50', '2N2BDGKl0L8', 'Gg_CLI3xY58', 'IWRXLrJhqA0', 'yz6MSiGZQCU', 'nLfFmYWjHtc'
+  ]
+}

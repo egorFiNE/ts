@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+*.mp3
+trash/
+*.json
+*.txt
+*.m4a
+*.wav
+.env.*
+configuration.json5

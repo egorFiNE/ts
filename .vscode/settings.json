@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "ts/**": true,
+    "backend/node_modules/**": true,
+    "app/node_modules/**": true,
+    "node_modules/**": true
+  },
+  "git.ignoreLimitWarning": true
+}

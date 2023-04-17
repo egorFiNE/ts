@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 25em){
+  html { font-size: calc(15px + 0.390625vw) }
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+@layer components {
+  .disabled, *:disabled {
+    @apply pointer-events-none opacity-70;
+  }
+}
+
+.container {
+  @apply mx-auto max-w-4xl px-6 lg:px-8;
+}
+
+.text-shadow {
+  text-shadow: 0px 0px 1px black;
+}
+.main-title {
+  font-size: calc(24px + 1vw);
+  line-height: 1.2;
+  .absolute {
+    height: 57%;
+  }
+}
+.main-subtitle {
+  line-height: 1;
+  font-weight: 400;
+  font-size: calc(8px + 0.8vw);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
