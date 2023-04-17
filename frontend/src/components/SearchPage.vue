@@ -223,6 +223,10 @@ async function doSearch() {
   summary.value = null;
   shareUrl.value = null;
 
+  try {
+    plausible('Search', { props: { query: search.value }});
+  } catch(e) {}
+
   const { data } = await useFetch(import.meta.env.VITE_API_URL_PREFIX + '/search/', {
     method: 'POST',
     headers: {
