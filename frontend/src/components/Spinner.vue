@@ -14,6 +14,8 @@
 </template>
 
 <style lang="scss" scoped>
+@use 'sass:math';
+
 @mixin keyframes($animation-name) {
     @-webkit-keyframes #{$animation-name} {
         @content;
@@ -99,13 +101,13 @@ body{
   @include animation('orbitSpecial 1.5s infinite linear');
   .electron{
     position:relative;
-    top: ($orbitSize - $electronSize)/2;
+    top: math.div(($orbitSize - $electronSize), 2);
     width:$electronSize;
     height:$electronSize;
     background:$electronColor;
     box-shadow: 0 0 15px $electronColor;
     border-radius:50%;
-    transform: translateX($orbitSize/2);
+    transform: translateX(math.div($orbitSize, 2));
     @include animation('electronAnimation 1.5s infinite linear');
   }
 }
@@ -132,8 +134,8 @@ body{
 }
 
 @include keyframes(electronAnimation) {
-  0% { transform: rotateZ(0deg)  translateX($orbitSize/2) rotateZ(-0deg) rotateY(-65deg)}
-  100% { transform: rotateZ(360deg) translateX($orbitSize/2) rotateZ(-360deg) rotateY(-65deg)}
+  0% { transform: rotateZ(0deg)  translateX(math.div($orbitSize, 2)) rotateZ(-0deg) rotateY(-65deg)}
+  100% { transform: rotateZ(360deg) translateX(math.div($orbitSize, 2)) rotateZ(-360deg) rotateY(-65deg)}
 }
 
 @include keyframes(orbitSpecial) {
