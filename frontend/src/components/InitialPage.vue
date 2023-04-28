@@ -4,13 +4,9 @@
   </p>
 
   <p class="mt-4 text-gray-400 text-sm">
-    Unlike typical search engines (like Google), here you can ask questions in free form and get answers based off Prof. Snyder's work.
-    The question is parsed by an AI engine, and the snippets of classes where the lecturer might be talking
-    about the subject similar to or related to the original question are retrieved.
-  </p>
-
-  <p class="mt-4 text-gray-400 text-sm">
-    The collection of semantically related snippets of wisdom is then summarized using GPT, a large AI language model.
+    Unlike typical search engines (like Google), here you can ask questions in free form and get answers based on the lectures.
+    The question is parsed by an AI engine, and the relevant snippets of classes are retrieved.
+    The collection is then summarized using GPT, a large AI language model.
   </p>
 
   <p class="mt-10 text-gray-400 text-sm">
@@ -22,6 +18,12 @@
       <li class="pl-8 mb-2 cursor-pointer underline decoration-dashed" @click="emitMyself">Is Crimea truly Ukraine?</li>
     </ul>
   </p>
+
+  <p class="mt-4 text-gray-400 text-sm">
+    To get better results, ask human questions. Entering search-like queries with a list of keywords, like you are used to doing on Google, doesn't work really well with a semantic search engine.
+  </p>
+
+
 </template>
 
 <script setup>
