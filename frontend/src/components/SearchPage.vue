@@ -37,7 +37,7 @@
             <div class="mt-2 col-span-6 sm:col-span-3">
               <label for="summaryModelName" class="block text-xs leading-5 text-gray-400 mr-3">Summary model</label>
               <select v-model="summaryModelName" id="summaryModelName" class="block w-full text-xs rounded-md border-0 py-1.5 pl-2 pr-5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600">
-                <option v-for="model in summaryModels" :key="model" :value="model">{{ model || 'do not summarize' }}</option>
+                <option v-for="model in summaryModels" :key="model" :value="model">{{ model }}</option>
               </select>
             </div>
           </div>
@@ -158,8 +158,7 @@ const isErrorState = shallowRef(false);
 
 const summaryModels = ref([
   'gpt-3.5-turbo',
-  'gpt-4',
-  null
+  'gpt-4'
 ]);
 
 const isAdvancedVisible = ref(false);
