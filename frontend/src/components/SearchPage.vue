@@ -183,7 +183,7 @@ const isShareButtonEnabled = shallowRef(false);
 async function share() {
   isShareButtonEnabled.value = false;
 
-  const { data } = await useFetch(import.meta.env.VITE_API_URL_PREFIX + '/share/', {
+  const { data } = await useFetch('/api/share/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -226,7 +226,7 @@ async function doSearch() {
     plausible('Search', { props: { query: search.value }});
   } catch(e) {}
 
-  const { data } = await useFetch(import.meta.env.VITE_API_URL_PREFIX + '/search/', {
+  const { data } = await useFetch('/api/search/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -266,7 +266,7 @@ async function getSummary() {
     return;
   }
 
-  const { data } = await useFetch(import.meta.env.VITE_API_URL_PREFIX + '/search/' + id.value).json();
+  const { data } = await useFetch('/api/search/' + id.value).json();
 
   if (!data.value.success) {
     showAlert("Something wrong happened on our servers. Please let us know or try again later.");
@@ -293,7 +293,7 @@ function showAlert(message) {
 async function loadModels() {
   let data = null;
 
-  const result = await useFetch(import.meta.env.VITE_API_URL_PREFIX + '/models/', {
+  const result = await useFetch('/api/models/', {
     method: 'GET'
   }).json();
 
@@ -326,7 +326,7 @@ onMounted(async () => {
     return;
   }
 
-  const { data } = await useFetch(import.meta.env.VITE_API_URL_PREFIX + '/shared/' + props.shareId, {
+  const { data } = await useFetch('/api/shared/' + props.shareId, {
     method: 'GET'
   }).json();
 
