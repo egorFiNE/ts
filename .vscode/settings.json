@@ -2,8 +2,10 @@
   "files.exclude": {
     "ts/**": true,
     "backend/node_modules/**": true,
+    "frontend/node_modules/**": true,
     "app/node_modules/**": true,
-    "node_modules/**": true
+    "node_modules/**": true,
+    "frontend-dist/**": true
   },
   "git.ignoreLimitWarning": true
 }
