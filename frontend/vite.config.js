@@ -17,7 +17,7 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
     outDir: '../frontend-dist',
-    target: ['es2020', 'chrome106', 'edge106', 'firefox104', 'safari15'],
+    target: ['es2021', 'chrome110', 'edge110', 'firefox110', 'safari15'],
     chunkSizeWarningLimit: '2000k'
   }
 });
