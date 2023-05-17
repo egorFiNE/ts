@@ -1,6 +1,6 @@
 <template>
   <background />
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col min-h-screen text-gray-700">
     <div class="shrink-0">
       <the-title @reset="bounce = !bounce"/>
     </div>
