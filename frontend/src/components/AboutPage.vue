@@ -14,25 +14,30 @@
       The collection of semantically related snippets of wisdom is then summarized using GPT, a large AI language model.
     </p>
 
-    <Disclosure>
-      <DisclosureButton>
-        In order to make the lectures searchable, we had to change some minor details of the transcriptions:
+    <Disclosure as="div" class="border rounded mt-4 bg-white px-8 py-6" v-slot="{ open }">
+      <DisclosureButton class="flex w-full items-center text-left">
+        <span class="font-semibold leading-7">
+          <span class="inline-block w-5 text-xs text-slate-300">
+            {{ open ? '▼' : '►'  }}
+          </span>
+          In order to make the lectures searchable, we had to change some minor details of the transcriptions
+        </span>
       </DisclosureButton>
 
-      <DisclosurePanel>
-        <ol role="list">
-          <li>For geographical places, we have used the official English spellings as transliterated from the Ukrainian language, i.e. “Chernihiv”, not “Chernigov”;</li>
-          <li>Except for “Odessa,” which we spelled here with double s, as in the Russian language;</li>
-          <li>Moscow is often mentioned as “Muscovy”, which is a valid toponym in itself;</li>
-          <li>
-            We have tried to keep important spelling details like “Kiev” vs “Kyiv” in the lectures where Prof. Snyder discusses the spelling of the Ukraine's
-            capital and “Vladimir” vs “Volodymyr” when discussing the names of significant historical figures, including modern presidents of the two countries;
+      <DisclosurePanel as="ul" role="list" class="my-4 space-y-3 text-slate-300 text-xs font-light list-disc ml-4">
+          <li class="pl-2"><span class="text-gray-700">For geographical places, we have used the official English spellings as transliterated from the Ukrainian language, i.e. “Chernihiv”, not “Chernigov”;</span></li>
+          <li class="pl-2"><span class="text-gray-700">Except for “Odessa,” which we spelled here with double s, as in the Russian language;</span></li>
+          <li class="pl-2"><span class="text-gray-700">Moscow is often mentioned as “Muscovy”, which is a valid toponym in itself;</span></li>
+          <li class="pl-2">
+            <span class="text-gray-700">
+              We have tried to keep important spelling details like “Kiev” vs “Kyiv” in the lectures where Prof. Snyder discusses the spelling of the Ukraine's
+              capital and “Vladimir” vs “Volodymyr” when discussing the names of significant historical figures, including modern presidents of the two countries;
+            </span>
           </li>
-          <li>We have used the commonly recognized spelling for geographically-related names, i.e. “Kievan Rus” and “Anne de Kiev”;</li>
-          <li>Some of the people's names were changed to their basic form in order to be searchable. For example, Prof. Snyder says “Zygmunt”, but we had to convert those mentions to “Sigismund”;</li>
-          <li>The beginnings and ends of the lectures containing discussions unrelated to the topic, such as greetings and students' matters, were removed from the index;</li>
-          <li>Some of the mispronunciations that were immediately corrected by the lecturer were shortened into the corrected version, with the repetition removed from the index.</li>
-        </ol>
+          <li class="pl-2"><span class="text-gray-700">We have used the commonly recognized spelling for geographically-related names, i.e. “Kievan Rus” and “Anne de Kiev”;</span></li>
+          <li class="pl-2"><span class="text-gray-700">Some of the people's names were changed to their basic form in order to be searchable. For example, Prof. Snyder says “Zygmunt”, but we had to convert those mentions to “Sigismund”;</span></li>
+          <li class="pl-2"><span class="text-gray-700">The beginnings and ends of the lectures containing discussions unrelated to the topic, such as greetings and students' matters, were removed from the index;</span></li>
+          <li class="pl-2"><span class="text-gray-700">Some of the mispronunciations that were immediately corrected by the lecturer were shortened into the corrected version, with the repetition removed from the index.</span></li>
       </DisclosurePanel>
     </Disclosure>
 
