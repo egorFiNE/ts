@@ -12,6 +12,11 @@ export class Search extends Model {
       allowNull: false
     },
 
+    indexedQuery: {
+      type: Sequelize.DataTypes.STRING(1000),
+      allowNull: false
+    },
+
     modelName: {
       type: Sequelize.DataTypes.STRING(250),
       allowNull: false
@@ -46,7 +51,7 @@ export class Search extends Model {
     timestamps: true,
     indexes: [
       {
-        fields: [ 'query', 'modelName' ],
+        fields: [ 'indexedQuery', 'modelName' ],
         unique: true
       }
     ]

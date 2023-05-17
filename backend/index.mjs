@@ -7,7 +7,7 @@ import FastifyCors from '@fastify/cors';
 import FastifyStatic from '@fastify/static';
 import { init } from '../models/index.mjs';
 import { getEmbeddings, normalizeEmbedding } from '../lib/Embeddings.mjs';
-import { search, summarize, shorten } from '../lib/Search.mjs';
+import { search, summarize, shorten, normalizeQuery, sanitizeQueryForIndexing } from '../lib/Search.mjs';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -49,11 +49,20 @@ fastify.get('/api/models/', () => ({
 fastify.post('/api/search/', async request => {
   const summaryModelName = request.body.summaryModelName || 'gpt-3.5';
   const modelName = request.body.modelName || 'openai';
-  const query = request.body.query;
+
+  const query = normalizeQuery(request.body.query);
+  if (!query) {
+    return {
+      success: true,
+      isEmpty: true
+    };
+  }
+
+  const indexedQuery = sanitizeQueryForIndexing(query);
 
   const searchCandidate = await sequelize.models.Search.findOne({
     where: {
-      query,
+      indexedQuery,
       modelName
     }
   });
@@ -82,6 +91,7 @@ fastify.post('/api/search/', async request => {
 
   const newRecord = await sequelize.models.Search.create({
     query,
+    indexedQuery,
     modelName,
     embedding,
     results: searchResults
