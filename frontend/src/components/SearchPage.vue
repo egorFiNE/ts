@@ -11,8 +11,10 @@
           <label for="search" class="sr-only">Search</label>
           <div class="relative w-full">
             <div class="absolute inset-y-0 left-0 flex items-center ml-3 mr-1 z-10" :class="search ? 'cursor-pointer' : 'pointer-events-none'" @click="reset">
-              <svg v-if="search" class="w-4 h-4 text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 10.5858L9.17157 7.75736L7.75736 9.17157L10.5858 12L7.75736 14.8284L9.17157 16.2426L12 13.4142L14.8284 16.2426L16.2426 14.8284L13.4142 12L16.2426 9.17157L14.8284 7.75736L12 10.5858Z" fill="currentColor"></path></svg>
-              <svg v-else class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="currentColor"></path></svg>
+              <div class="w-4 h-4 relative">
+                <svg class="absolute inset-0 text-gray-400 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-opacity" :class="search ? 'opacity-100' : 'opacity-0'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 10.5858L9.17157 7.75736L7.75736 9.17157L10.5858 12L7.75736 14.8284L9.17157 16.2426L12 13.4142L14.8284 16.2426L16.2426 14.8284L13.4142 12L16.2426 9.17157L14.8284 7.75736L12 10.5858Z" fill="currentColor"></path></svg>
+                <svg class="absolute inset-0 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-opacity" :class="search ? 'opacity-0' : 'opacity-100'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="currentColor"></path></svg>
+              </div>
             </div>
             <input v-model="search" type="text" id="search" :disabled="isLoading || isErrorState" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 pr-32 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your question…" autocomplete="off" required>
             <div class="absolute inset-y-1 right-1 flex items-center border-l mr-[-1px]">
@@ -149,6 +151,7 @@ import { ref, shallowRef, onMounted } from 'vue';
 import { useFetch } from '@vueuse/core';
 import gsap from 'gsap';
 import { models, isErrorState } from '../useModels';
+import { watch } from 'vue';
 
 const props = defineProps({
   shareId: {
@@ -182,6 +185,20 @@ const alertModal = ref(null);
 
 const isLoading = shallowRef(false);
 const isShareButtonEnabled = shallowRef(false);
+
+// race condition with shared results page
+if (!modelName.value) {
+  if (models.value.length > 0) {
+    modelName.value = models.value[0];
+  } else {
+    const unwatch = watch(models, (value) => {
+      if (value.length > 0) {
+        modelName.value = value[0];
+        unwatch();
+      }
+    });
+  }
+}
 
 async function share() {
   isShareButtonEnabled.value = false;
@@ -292,8 +309,6 @@ function jumpTo(item) {
 function showAlert(message) {
   alertModal.value.show(message);
 }
-
-
 
 onMounted(async () => {
   if (!props.shareId) {
