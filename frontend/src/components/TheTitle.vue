@@ -18,8 +18,10 @@ import TheLinks from './TheLinks.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+const emit = defineEmits(['reset']);
 
 function getBack() {
+  emit('reset');
   router.push('/');
 }
 </script>

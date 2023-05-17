@@ -2,11 +2,11 @@
   <background />
   <div class="flex flex-col min-h-screen">
     <div class="shrink-0">
-      <the-title />
+      <the-title @reset="bounce = !bounce"/>
     </div>
 
     <div class="grow">
-      <router-view />
+      <router-view :key="bounce" @reset="bounce = !bounce" />
     </div>
 
     <div class="shrink-0 border-t">
@@ -19,4 +19,7 @@
 import TheFooter from './components/TheFooter.vue';
 import TheTitle from './components/TheTitle.vue';
 import Background from './components/Background.vue';
+import { shallowRef } from 'vue';
+
+const bounce = shallowRef(false);
 </script>
