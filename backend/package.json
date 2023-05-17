@@ -4,17 +4,5 @@
   "private": true,
   "scripts": {
     "dev": "nodemon index.mjs"
-  },
-  "dependencies": {
-    "@fastify/cors": "^8.2.1",
-    "@fastify/one-line-logger": "^1.2.0",
-    "@fastify/static": "^6.10.1",
-    "axios": "^1.4.0",
-    "dotenv": "^16.0.3",
-    "fastify": "^4.17.0",
-    "json5": "^2.2.3"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
   }
 }
