@@ -59,11 +59,14 @@
         <transition-grow>
           <div v-if="!isLoading && prevSearch">
             <div class="my-6 flex items-center">
-              <div class="text-gray-400 grow text-sm">
+              <h2 class="text-xl font-medium text-slate-600 grow">{{ prevSearch }}</h2>
+
+              <!-- <div class="text-gray-400 grow text-sm">
                 <span class="mr-2">Showing results for:</span>
                 <span class="font-bold">{{ prevSearch }}</span>
-              </div>
-              <div class="shrink-0">
+              </div> -->
+
+              <div class="shrink-0 ml-2">
                 <div v-if="shareUrl">
                   <copy-to-clipboard :text="shareUrl" />
                 </div>
@@ -80,7 +83,6 @@
           <div v-if="!isLoading && id" class="my-4 h-max min-h-[100px] relative">
             <transition-fade>
               <div v-if="summary" class="text-sm mb-6">
-                <h2 class="text-xl font-medium text-slate-600 mt-5 mb-4">{{ prevSearch }}</h2>
                 {{ summary }}
 
                 <p class="mt-4 text-slate-400 text-xs">The above answer is summarized by GPT model based on the snippets found in lectures.</p>
