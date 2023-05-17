@@ -55,13 +55,13 @@
       in Kiev, Ukraine.
     </p>
 
-    <div class="relative bg-gray-900 rounded-lg overflow-hidden mb-16 mt-6">
-      <div class="relative h-80 overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">
+    <div class="relative bg-gray-900 rounded-lg overflow-hidden mb-20 mt-16">
+      <div class="relative h-80 overflow-hidden bg-indigo-600 lg:absolute lg:left-0 lg:h-full lg:w-1/2">
         <img class="h-full w-full object-cover" src="/mriya.jpg" alt="" />
       </div>
 
       <div class="relative mx-auto max-w-7xl py-24 sm:py-22 lg:px-8 lg:py-20">
-        <div class="pl-6 pr-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pl-20 lg:pr-0 xl:pl-24">
+        <div class="pl-6 pr-6 lg:ml-auto lg:w-1/2 lg:pl-20 lg:pr-0 xl:pl-24">
           <h2 class="text-base font-semibold leading-7 text-cyan-600">AI search engine</h2>
           <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Need one for your data?</p>
           <p class="mt-6 text-base leading-7 text-gray-300">
