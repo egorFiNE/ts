@@ -104,7 +104,7 @@
         </transition-grow>
 
         <transition-grow>
-          <h2 v-if="!isLoading && prevSearch && results?.length" class="text-xl font-medium text-slate-600 pt-6">Relevant transcripts:</h2>
+          <h2 v-if="!isLoading && prevSearch && results?.length" class="text-xl font-medium text-slate-600 pt-2">Relevant transcripts:</h2>
         </transition-grow>
 
         <transition-group
