@@ -40,7 +40,11 @@
     </p>
 
     <p class="mt-4">
-      This software is created by <a class="underline" href="https://egorfine.com/en/">Egor Egorov</a> and <a class="underline" href="https://github.com/insky">Roman Zhbadynskyi</a> in Kiev, Ukraine.
+      This software is created by
+      <a class="underline" href="https://egorfine.com/en/">Egor Egorov</a>,
+      <a class="underline" href="https://github.com/insky">Roman Zhbadynskyi</a> and
+      <a class="underline" href="https://www.linkedin.com/in/shimalsky/">Eugene Shimalsky</a>
+      in Kiev, Ukraine.
     </p>
 
     <p class="mt-4 mb-10">
