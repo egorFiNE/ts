@@ -14,7 +14,6 @@ async function reloadModels() {
   if (result.error.value) {
     isErrorState.value = true;
     models.value = [];
-    // showAlert("There was an error loading some of the configuration, so it might not work. Please try again later.");
     return;
   }
 
@@ -23,14 +22,10 @@ async function reloadModels() {
   if (!data.value.success) {
     isErrorState.value = true;
     models.value = [];
-    // showAlert("There was an error loading some of the configuration, so it might not work. Please try again later.");
     return;
   }
 
   models.value = data.value.models;
-  // if (!modelName.value) { // race condition with shared results page
-  //   modelName.value = data.value.models[0];
-  // }
 }
 
 async function loadModels() {
