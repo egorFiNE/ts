@@ -65,11 +65,15 @@
           <h2 class="text-base font-semibold leading-7 text-cyan-600">AI search engine</h2>
           <p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Need one for your data?</p>
           <p class="mt-6 text-base leading-7 text-gray-600">
-            This is a showcase technology product. We are a team of developers and we can create a custom solution for your semantic search requirements based on your texts.
+            Our AI-powered semantic search engine could be the answer. We're a team of developers who can build a bespoke solution for you, or support a cloud instance for your data.
           </p>
           <div class="mt-8">
             <a href="mailto:me@egorfine.com?subject=ts" class="inline-flex rounded-md bg-cyan-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Drop us an email</a>
           </div>
+          <div class="mt-8 text-gray-600 text-xs">
+            We're ready to discuss your requirements and explore how our search engine can improve your operations.
+          </div>
+
         </div>
       </div>
     </div>
