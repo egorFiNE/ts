@@ -6,7 +6,7 @@
           About
         </router-link>
         <a href="mailto:me@egorfine.com" class="text-slate-400 hover:text-slate-500">
-          Contact Us
+          Contact us
         </a>
         <a href="https://github.com/egorFiNE/ts" class="text-slate-400 hover:text-slate-500">
           GitHub

@@ -36,7 +36,8 @@
     </figure>
 
     <p class="mt-4">
-      This is an open source software, so you are most welcome to <a class="underline" href="https://github.com/egorFiNE/ts">fork the code at GitHub</a> or <a class="underline" href="https://github.com/egorFiNE/ts/issues">submit issues</a>.
+      This is an open source software, so you are most welcome to <a class="underline" href="https://github.com/egorFiNE/ts">fork the code at GitHub</a> or
+      <a class="underline" href="https://github.com/egorFiNE/ts/issues">submit issues</a>. Looking for prompt we use to summarize the answer? See <a class="underline pointer" href="https://github.com/egorFiNE/ts/blob/master/lib/Search.mjs#L182"><code>lib/Search.mjs:summarize()</code></a>.
     </p>
 
     <p class="mt-4">
