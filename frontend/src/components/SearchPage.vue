@@ -153,6 +153,7 @@ import { ref, shallowRef, watch, onMounted } from 'vue';
 import { useFetch } from '@vueuse/core';
 import gsap from 'gsap';
 import { models, isErrorState } from '../useModels';
+import { isDisclaimerVisible } from '../useDisclaimer';
 
 const props = defineProps({
   shareId: {
@@ -176,6 +177,8 @@ const modelName = ref(null);
 const summaryModelName = ref(summaryModels.value[0]);
 const isInitialState = ref(true);
 const shareUrl = ref(null);
+
+watch(isInitialState, value => isDisclaimerVisible.value = value, { immediate: true });
 
 const results = ref([]);
 const summary = ref(null);

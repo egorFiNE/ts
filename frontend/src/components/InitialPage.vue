@@ -16,11 +16,6 @@
   <p class="mt-4 text-gray-700 text-sm">
     Asking questions in free form, like you would ask a human, will get better answers.
   </p>
-
-  <p class="mt-4 text-gray-400 text-sm">
-    Disclaimer: transcripts of lectures are used verbatim.
-    <router-link to="/about" class="cursor-pointer underline decoration-dashed">Read more.</router-link>
-  </p>
 </template>
 
 <script setup>

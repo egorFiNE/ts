@@ -9,7 +9,7 @@
       <router-view :key="bounce" @reset="bounce = !bounce" />
     </div>
 
-    <div class="shrink-0 border-t">
+    <div class="shrink-0">
       <the-footer />
     </div>
   </div>

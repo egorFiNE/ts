@@ -1,5 +1,10 @@
 <template>
-  <footer>
+  <div v-if="isDisclaimerVisible && $route.path == '/'" class="container pt-4 pb-2 text-slate-400 text-xs">
+    Disclaimer: transcripts of lectures are used verbatim.
+    <router-link to="/about" class="cursor-pointer underline decoration-dashed">Read more.</router-link>
+  </div>
+
+  <footer class="border-t">
     <div class="container py-8 md:flex md:items-center md:justify-between">
       <div class="flex justify-center space-x-6 md:order-2 text-xs">
         <router-link to="/about" class="text-slate-400 hover:text-slate-500">
@@ -25,3 +30,7 @@
     </div>
   </footer>
 </template>
+
+<script setup>
+import { isDisclaimerVisible } from '../useDisclaimer';
+</script>
