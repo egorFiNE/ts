@@ -16,7 +16,7 @@
                 <svg class="absolute inset-0 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-opacity" :class="search ? 'opacity-0' : 'opacity-100'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="currentColor"></path></svg>
               </div>
             </div>
-            <input v-model="search" type="text" id="search" :disabled="isLoading || isErrorState" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 pr-32 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your question…" autocomplete="off" required>
+            <input v-model="search" type="text" id="search" :disabled="isLoading || isErrorState" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 pr-32 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ask something…" autocomplete="off" required>
             <div class="absolute inset-y-1 right-1 flex items-center border-l mr-[-1px]">
               <button type="button" :disabled="isLoading || isErrorState" class="px-3" @click="isAdvancedVisible = !isAdvancedVisible">
                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.32894 3.27158C6.56203 2.8332 7.99181 3.10749 8.97878 4.09446C9.96603 5.08171 10.2402 6.51202 9.80129 7.74535L20.646 18.5902L18.5247 20.7115L7.67887 9.86709C6.44578 10.3055 5.016 10.0312 4.02903 9.04421C3.04178 8.05696 2.76761 6.62665 3.20652 5.39332L5.44325 7.63C6.02903 8.21578 6.97878 8.21578 7.56457 7.63C8.15035 7.04421 8.15035 6.09446 7.56457 5.50868L5.32894 3.27158ZM15.6963 5.15512L18.8783 3.38736L20.2925 4.80157L18.5247 7.98355L16.757 8.3371L14.6356 10.4584L13.2214 9.04421L15.3427 6.92289L15.6963 5.15512ZM8.62523 12.9333L10.7465 15.0546L5.7968 20.0044C5.21101 20.5902 4.26127 20.5902 3.67548 20.0044C3.12415 19.453 3.09172 18.5793 3.57819 17.99L3.67548 17.883L8.62523 12.9333Z" fill="currentColor"></path></svg>
@@ -88,7 +88,9 @@
               <div v-if="summary" class="text-sm mb-6">
                 {{ summary }}
 
-                <p class="mt-4 text-slate-400 text-xs">The above answer is summarized by GPT model based on the snippets found in lectures.</p>
+                <p class="mt-4 text-slate-400 text-xs">
+                  The above answer is automatically summarized by AI model based on the transcripts as presented below and is not the author's direct speech.
+                </p>
               </div>
 
               <div v-else role="status" class="animate-pulse absolute inset-0">
@@ -102,7 +104,7 @@
         </transition-grow>
 
         <transition-grow>
-          <h2 v-if="!isLoading && prevSearch && results?.length" class="text-xl font-medium text-slate-600 pt-6">Semantic search results:</h2>
+          <h2 v-if="!isLoading && prevSearch && results?.length" class="text-xl font-medium text-slate-600 pt-6">Relevant transcripts:</h2>
         </transition-grow>
 
         <transition-group
