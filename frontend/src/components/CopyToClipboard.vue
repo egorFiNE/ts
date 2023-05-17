@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <input :value="text" type="text" class="bg-gray-50 border border-gray-300 text-xs rounded-lg text-gray-400 pl-2.5 pr-9 pl-5" autocomplete="off" readonly>
+    <input :value="text" type="text" class="bg-gray-50 border border-gray-300 text-xs rounded-lg text-gray-400 pr-9 pl-5" autocomplete="off" readonly>
     <div class="absolute inset-y-1 right-1 flex items-center">
       <button class="transition !p-2" :class="{ 'text-green-700': isTextCopied, 'text-gray-500': !isTextCopied }" :disabled="isTextCopied" @click="copy">
         <svg v-if="isTextCopied" xmlns="http://www.w3.org/2000/svg" class="d-inline-block w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
