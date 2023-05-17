@@ -14,9 +14,10 @@
       </div>
       <div class="mt-8 md:order-1 md:mt-0">
         <p class="text-center text-xs leading-5 text-slate-400">
+          <!--
           <span>&copy; 2023</span>
-
           <span class="mx-5 border-slate-300 border-l" />
+          -->
 
           Made in <span class="text-lg mx-1 relative top-[2px]" style="opacity: 0.6">🇺🇦</span>
         </p>
