@@ -27,6 +27,15 @@
           <div v-if="isErrorState" class="relative w-full text-sm text-red-400 pt-2">
             There was an error loading configuration, so search is temporarily unavailable. Please try again later.
           </div>
+
+          <transition-grow>
+            <div v-if="isAmbiguousQuery" class="mt-2 text-orange-700 font-light relative pl-6">
+              <div class="absolute top-0 -left-0">👆</div>
+              <span class="text-sm">
+                Unlike Google, this search engine works better by asking actual questions in free form. Please end your question with &laquo;?&raquo; or click again on Search button to continue.
+              </span>
+            </div>
+          </transition-grow>
         </form>
 
         <transition-grow>
@@ -234,10 +243,22 @@ async function share() {
   shareUrl.value = u.toString();
 }
 
+const isAmbiguousQuery = shallowRef(false);
+
 async function doSearch() {
   if (!search.value) {
     return;
   }
+
+  const normalizedSearch = (search.value || '').replace(/\s+/, ' ').replaceAll(' ?', '?').trim();
+  if (!normalizedSearch.endsWith('?')) {
+    if (!isAmbiguousQuery.value) {
+      isAmbiguousQuery.value = true;
+      return;
+    }
+  }
+
+  isAmbiguousQuery.value = false;
 
   isLoading.value = true;
 
