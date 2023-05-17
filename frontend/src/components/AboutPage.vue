@@ -14,7 +14,7 @@
       The collection of semantically related snippets of wisdom is then summarized using GPT, a large AI language model.
     </p>
 
-    <Disclosure as="div" class="border rounded mt-6 bg-white px-8 py-6" v-slot="{ open }">
+    <Disclosure as="div" class="border rounded mt-6 bg-white/70 px-8 py-6" v-slot="{ open }">
       <DisclosureButton class="flex w-full items-center text-left">
         <span class="font-semibold leading-7">
           <span class="inline-block w-5 text-xs text-slate-300">
