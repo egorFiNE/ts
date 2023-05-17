@@ -147,11 +147,10 @@ import CopyToClipboard from './CopyToClipboard.vue';
 import SearchItem from './SearchItem.vue';
 import VideoModal from './VideoModal.vue';
 import AlertModal from './AlertModal.vue';
-import { ref, shallowRef, onMounted } from 'vue';
+import { ref, shallowRef, watch, onMounted } from 'vue';
 import { useFetch } from '@vueuse/core';
 import gsap from 'gsap';
 import { models, isErrorState } from '../useModels';
-import { watch } from 'vue';
 
 const props = defineProps({
   shareId: {
