@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies, import/no-relative-packages */
 import 'dotenv/config';
 import fs from 'fs';
 import path from 'path';
@@ -30,15 +31,31 @@ fastify.decorate('sequelize', sequelize);
 
 const configuration = json5.parse(fs.readFileSync('../configuration.json5'));
 
-if (process.env.NODE_ENV == 'production') {
+async function createSummary(id, query, summaryModelName, contextEntries) {
+  const record = await sequelize.models.Search.findByPk(id);
+
+  if (process.env.EMULATE_SUMMARY) {
+    console.warn("WARNING: emulated summary");
+
+    setTimeout(async () => {
+      record.summary = 'Emulated summary for your enjoyment';
+      await record.save();
+    }, 2000);
+
+    return;
+  }
+
+  record.summary = await summarize(query, summaryModelName, contextEntries);
+  await record.save();
+}
+
+if (process.env.NODE_ENV === 'production') {
   fastify.register(FastifyStatic, {
     root: path.join(process.cwd(), '..', 'frontend-dist')
   });
 
 } else {
-  fastify.setErrorHandler(function (error, request, reply) {
-    console.error(error);
-  });
+  fastify.setErrorHandler((error, request, reply) => console.error(request.url, error)); // eslint-disable-line no-unused-vars
 }
 
 fastify.get('/api/models/', () => ({
@@ -80,14 +97,14 @@ fastify.post('/api/search/', async request => {
 
   const searchResults = await search(configuration, embedding, modelName);
 
-  if (searchResults.length == 0) {
+  if (searchResults.length === 0) {
     return {
       success: true,
       isEmpty: true
     };
   }
 
-  searchResults.forEach(entry => entry.videoId = configuration.lectures[entry.lecture-1]);
+  searchResults.forEach(entry => entry.videoId = configuration.lectures[entry.lecture - 1]);
 
   const newRecord = await sequelize.models.Search.create({
     query,
@@ -107,26 +124,8 @@ fastify.post('/api/search/', async request => {
   };
 });
 
-async function createSummary(id, query, summaryModelName, contextEntries) {
-  const record = await sequelize.models.Search.findByPk(id);
-
-  if (process.env.EMULATE_SUMMARY) {
-    console.warn("WARNING: emulated summary");
-
-    setTimeout(async () => {
-      record.summary = 'Emulated: The lecturer is going to discuss the theoretical origins of nations and explore the question of why nations exist in general. They will examine the deeper forces that lead to nation creation and destruction, and the human choices and circumstances that contribute to the formation of nations. The lecturer emphasizes that nations are a modern historical construct characterized by a sense of solidarity with people you don\'t know. They also mention that history is not about how everything has to be the way it is now, and that sometimes things change, and sometimes they don\'t. The lecturer does not provide a definitive answer to why nations came to be, but rather explores the different factors that contribute to their formation.';
-      await record.save();
-    }, 2000);
-
-    return;
-  }
-
-  record.summary = await summarize(query, summaryModelName, contextEntries);
-  await record.save();
-}
-
 fastify.get('/api/search/:id', async (request, reply) => {
-  const id = request.params.id;
+  const { id } = request.params;
 
   const record = await sequelize.models.Search.findByPk(id);
   if (!record) {
@@ -150,7 +149,7 @@ fastify.get('/api/search/:id', async (request, reply) => {
 });
 
 fastify.post('/api/share/', async (request, reply) => {
-  const id = request.body.id;
+  const { id } = request.body;
   const searchCandidate = await sequelize.models.Search.findByPk(id);
   if (!searchCandidate) {
     reply.code(404);
@@ -169,7 +168,7 @@ fastify.post('/api/share/', async (request, reply) => {
 });
 
 fastify.get('/api/shared/:shareId', async (request, reply) => {
-  const shareId = request.params.shareId;
+  const { shareId } = request.params;
 
   const searchCandidate = await sequelize.models.Search.findOne({
     where: {
@@ -212,4 +211,3 @@ fastify.listen(
     }
   }
 );
-

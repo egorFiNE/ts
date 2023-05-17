@@ -41,7 +41,7 @@ export class Search extends Model {
       type: Sequelize.DataTypes.STRING(4),
       defaultValue: null
     }
-  }
+  };
 
   share() {
     this.shareId = this.shareId || randomUUID().substring(0, 4);
@@ -55,5 +55,5 @@ export class Search extends Model {
         unique: true
       }
     ]
-  }
+  };
 }
