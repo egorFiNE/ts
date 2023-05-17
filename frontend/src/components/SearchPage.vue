@@ -102,11 +102,12 @@
                 </p>
               </div>
 
-              <div v-else role="status" class="animate-pulse absolute inset-0">
-                <div class="h-2.5 bg-gray-200 rounded-sm dark:bg-gray-700 w-1/3 mb-4"></div>
-                <div class="h-2 bg-gray-200 rounded-sm dark:bg-gray-700 w-4/5 mb-2.5"></div>
-                <div class="h-2 bg-gray-200 rounded-sm dark:bg-gray-700 w-3/4 mb-2.5"></div>
+              <div v-else role="status" class="absolute inset-0">
+                <div class="animate-pulse h-2.5 bg-gray-200 rounded-sm dark:bg-gray-700 w-1/3 mb-4"></div>
+                <div class="animate-pulse h-2 bg-gray-200 rounded-sm dark:bg-gray-700 w-4/5 mb-2.5"></div>
+                <div class="animate-pulse h-2 bg-gray-200 rounded-sm dark:bg-gray-700 w-3/4 mb-2.5"></div>
                 <span class="sr-only">Loading...</span>
+                <div class="text-slate-400 text-xs mt-4">Waiting for GPT to summarize the answer from relevant transcripts...</div>
               </div>
             </transition-fade>
           </div>
