@@ -96,7 +96,7 @@
 
         <transition-grow>
           <div v-if="isLoading" class="my-6 text-gray-400">
-            <spinner class="mr-2" />
+            <a-spinner class="mr-2" />
             Loading...
           </div>
         </transition-grow>
@@ -191,7 +191,7 @@
 
   <video-modal ref="videoMadal" />
 
-  <alert-modal ref="alertModal" />
+  <alrt-modal ref="alertModal" />
 </template>
 
 <script setup>
@@ -202,6 +202,7 @@ import TransitionFade from './TransitionFade.vue';
 import ScrollToTop from './ScrollToTop.vue';
 import CopyToClipboard from './CopyToClipboard.vue';
 import SearchItem from './SearchItem.vue';
+import AlrtModal from './AlertModal.vue';
 import VideoModal from './VideoModal.vue';
 import { ref, shallowRef, watch, onMounted } from 'vue';
 import { useFetch } from '@vueuse/core';
