@@ -21,10 +21,7 @@
     "import/order": "off",
     "no-return-await": "off",
     "prefer-template": "off",
-    "max-len": [
-      "warn",
-      { "code": 160, "ignorePattern": "(class=\"|<svg |\\s+d=\")" }
-    ],
+    "max-len": "off",
     "array-bracket-spacing": ["error", "always"],
     "arrow-parens": ["error", "as-needed"],
     "padded-blocks": "off",

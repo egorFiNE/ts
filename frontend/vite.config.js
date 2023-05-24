@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,17 +7,17 @@ export default defineConfig({
     port: 3000,
 
     proxy: {
-      '/api': 'http://localhost:3090',
+      '/api': 'http://localhost:3090'
     }
   },
 
-  plugins: [vue()],
+  plugins: [ vue() ],
 
   build: {
     sourcemap: true,
     emptyOutDir: true,
     outDir: '../frontend-dist',
-    target: ['es2021', 'chrome110', 'edge110', 'firefox110', 'safari15'],
+    target: [ 'es2021', 'chrome110', 'edge110', 'firefox110', 'safari15' ],
     chunkSizeWarningLimit: '2000k'
   }
 });

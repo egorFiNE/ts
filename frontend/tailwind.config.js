@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const tailwindForms = require('@tailwindcss/forms');
+
 module.exports = {
   mode: '',
   darkMode: 'class',
@@ -24,7 +26,5 @@ module.exports = {
       }
     }
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ]
-}
+  plugins: [ tailwindForms ]
+};
