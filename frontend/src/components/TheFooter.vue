@@ -1,7 +1,9 @@
 <template>
   <div v-if="isDisclaimerVisible && $route.path == '/'" class="container pt-4 pb-2 text-slate-400 text-xs">
     Disclaimer: transcripts of lectures are used verbatim.
-    <router-link to="/about" class="cursor-pointer underline decoration-dashed">Read more.</router-link>
+    <router-link to="/about" class="cursor-pointer underline decoration-dashed">
+      Read more.
+    </router-link>
   </div>
 
   <footer class="border-t text-slate-400">

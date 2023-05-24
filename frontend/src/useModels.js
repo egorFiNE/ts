@@ -37,4 +37,4 @@ async function loadModels() {
 
 loadModels();
 
-export { models, isErrorState }
+export { models, isErrorState };

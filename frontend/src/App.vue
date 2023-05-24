@@ -1,8 +1,8 @@
 <template>
-  <background />
+  <the-background />
   <div class="flex flex-col min-h-screen text-gray-700">
     <div class="shrink-0">
-      <the-title @reset="bounce = !bounce"/>
+      <the-title @reset="bounce = !bounce" />
     </div>
 
     <div class="grow">
@@ -18,7 +18,7 @@
 <script setup>
 import TheFooter from './components/TheFooter.vue';
 import TheTitle from './components/TheTitle.vue';
-import Background from './components/Background.vue';
+import TheBackground from './components/TheBackground.vue';
 import { shallowRef } from 'vue';
 
 const bounce = shallowRef(false);

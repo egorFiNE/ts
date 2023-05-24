@@ -1,21 +1,18 @@
 <template>
-  <canvas ref="canvas" class="fixed w-screen h-screen opacity-10 -z-10" />
+  <canvas ref="canvas" class="fixed -z-10 h-screen w-screen opacity-10" />
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 const canvas = ref(null);
 
 onMounted(() => {
-  const ctx = canvas.value.getContext('2d');
+  const ctx = canvas.value.getContext("2d");
 
   const numCircles = 10;
 
-  const colors = [
-    'rgba(0, 20, 255, 0.9)',
-    'rgba(255, 215, 0, 0.5)'
-  ];
+  const colors = [ "rgba(0, 20, 255, 0.9)", "rgba(255, 215, 0, 0.5)" ];
 
   // Draw random circles
   for (let i = 0; i < numCircles; i++) {
@@ -25,10 +22,9 @@ onMounted(() => {
     const blur = Math.round(Math.random() * 20 + 10); // Random blur between
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.round(2 * Math.PI));
-    ctx.fillStyle = i < numCircles/2 ? colors[0] : colors[1];
+    ctx.fillStyle = i < numCircles / 2 ? colors[0] : colors[1];
     ctx.filter = `blur(${blur}px)`;
     ctx.fill();
   }
 });
 </script>
-

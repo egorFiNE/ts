@@ -1,10 +1,10 @@
 <template>
   <transition
     :css="false"
-    @beforeEnter="onBeforeEnter"
+    mode="out-in"
+    @before-enter="onBeforeEnter"
     @enter="onEnter"
     @leave="onLeave"
-    mode="out-in"
   >
     <slot />
   </transition>

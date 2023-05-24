@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/about/',
     component: AboutPage
-  },
+  }
 ];
 
 const router = createRouter({
@@ -25,7 +25,7 @@ const router = createRouter({
   routes,
   scrollBehavior() {
     // always scroll to top
-    return { top: 0 }
+    return { top: 0 };
   }
 });
 
