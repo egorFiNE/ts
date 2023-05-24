@@ -36,6 +36,7 @@
     "no-return-assign": "off",
     "no-plusplus": "off",
     "no-use-before-define": "off",
+    "no-unused-vars": ["error", { "varsIgnorePattern": "^_" }],
     "prefer-destructuring": "off",
     "import/prefer-default-export": "off",
     "import/no-relative-packages": "off",

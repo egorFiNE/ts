@@ -282,7 +282,7 @@ async function share() {
   u.hash = '';
   u.pathname = '/' + data.value.shareId;
 
-  for (const [ key ] of u.searchParams) {
+  for (const [ key, _value ] of u.searchParams) {
     u.searchParams.delete(key);
   }
 
