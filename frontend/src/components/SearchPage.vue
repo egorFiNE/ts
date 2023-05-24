@@ -189,9 +189,9 @@
 
   <scroll-to-top />
 
-  <video-modal ref="videoMadal" />
+  <video-modal ref="videoMadalRef" />
 
-  <alrt-modal ref="alertModal" />
+  <alert-modal ref="alertModalRef" />
 </template>
 
 <script setup>
@@ -202,7 +202,7 @@ import TransitionFade from './TransitionFade.vue';
 import ScrollToTop from './ScrollToTop.vue';
 import CopyToClipboard from './CopyToClipboard.vue';
 import SearchItem from './SearchItem.vue';
-import AlrtModal from './AlertModal.vue';
+import AlertModal from './AlertModal.vue';
 import VideoModal from './VideoModal.vue';
 import { ref, shallowRef, watch, onMounted } from 'vue';
 import { useFetch } from '@vueuse/core';
@@ -239,8 +239,8 @@ const results = ref([]);
 const summary = ref(null);
 const id = ref(null);
 
-const videoMadal = ref(null);
-const alertModal = ref(null);
+const videoMadalRef = ref(null);
+const alertModalRef = ref(null);
 
 const isLoading = shallowRef(false);
 const isShareButtonEnabled = shallowRef(false);
@@ -374,11 +374,11 @@ async function getSummary() {
 }
 
 function jumpTo(item) {
-  videoMadal.value.play(item);
+  videoMadalRef.value.play(item);
 }
 
 function showAlert(message) {
-  alertModal.value.show(message);
+  alertModalRef.value.show(message);
 }
 
 onMounted(async () => {
