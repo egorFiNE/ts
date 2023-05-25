@@ -25,7 +25,7 @@
             leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-3xl sm:p-6">
-              <div class="w-full aspect-video">
+              <div v-if="videoId" class="w-full aspect-video">
                 <VueYtframe
                   ref="player"
                   :key="videoId"
@@ -94,10 +94,9 @@ function formatMilliseconds(ms) {
 }
 
 function play(item) {
-  console.log(item);
   videoId.value = item.videoId;
   text.value = item.text;
-  title.value = `Class ${item.lecture}`;
+  title.value = `Class ${item.document}`;
   timing.value = `${formatMilliseconds(item.start)}-${formatMilliseconds(item.end)}`;
   open.value = true;
 

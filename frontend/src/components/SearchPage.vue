@@ -108,11 +108,6 @@
                 {{ prevSearch }}
               </h2>
 
-              <!-- <div class="text-gray-400 grow text-sm">
-                <span class="mr-2">Showing results for:</span>
-                <span class="font-bold">{{ prevSearch }}</span>
-              </div> -->
-
               <div class="shrink-0 ml-2">
                 <div v-if="shareUrl">
                   <copy-to-clipboard :text="shareUrl" />
@@ -211,6 +206,10 @@ import { models, isErrorState } from '../useModels';
 import { isDisclaimerVisible } from '../useDisclaimer';
 
 const props = defineProps({
+  section: {
+    type: String,
+    default: 'snyder'
+  },
   shareId: {
     type: String,
     default: ''
@@ -280,7 +279,7 @@ async function share() {
   const u = new URL(document.location.href);
   u.search = '';
   u.hash = '';
-  u.pathname = '/' + data.value.shareId;
+  u.pathname = '/' + props.section + '/' + data.value.shareId;
 
   for (const [ key, _value ] of u.searchParams) {
     u.searchParams.delete(key);
@@ -323,6 +322,7 @@ async function doSearch() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
+      library: 1, // FIXME: add real library Id
       modelName: modelName.value,
       summaryModelName: summaryModelName.value,
       query: search.value

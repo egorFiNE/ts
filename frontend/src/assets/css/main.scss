@@ -13,9 +13,9 @@ html {
   font-size: 16px;
 }
 
-@media screen and (min-width: 25em){
-  html { font-size: calc(15px + 0.390625vw) }
-}
+// @media screen and (min-width: 25em){
+//   html { font-size: calc(15px + 0.390625vw) }
+// }
 
 body {
   height: 100%;
@@ -27,9 +27,20 @@ body {
   height: 100vh;
 }
 
+// @layer base {
+//   .font-script {
+//     font-family: 'Explora', sans-serif;
+//     font-weight: 400;
+//   }
+// }
+
 @layer components {
   .disabled, *:disabled {
     @apply pointer-events-none opacity-70;
+  }
+  .stretched-link::after {
+    content: "";
+    @apply z-10 absolute inset-0 bg-transparent pointer-events-auto;
   }
 }
 

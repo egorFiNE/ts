@@ -1,16 +1,22 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
 import SearchPage from './components/SearchPage.vue';
+import MainPage from './components/MainPage.vue';
 import AboutPage from './components/AboutPage.vue';
 
 const routes = [
   {
     path: '/',
+    component: MainPage,
+    props: true
+  },
+  {
+    path: '/:section/',
     component: SearchPage,
     props: true
   },
   {
-    path: '/:shareId/',
+    path: '/:section/:shareId/',
     component: SearchPage,
     props: true
   },
