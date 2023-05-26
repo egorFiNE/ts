@@ -6,12 +6,7 @@ registerType(Sequelize);
 
 export class Chunk extends Model {
   static structure = {
-    library: {
-      type: Sequelize.DataTypes.INTEGER,
-      allowNull: false
-    },
-
-    document: {
+    documentId: {
       type: Sequelize.DataTypes.INTEGER,
       allowNull: false
     },
@@ -50,20 +45,23 @@ export class Chunk extends Model {
     }
   };
 
-  static async search({ library, embedding, modelName, limit = 100 }) {
+  static async search({ libraryId, embedding, modelName, limit = 100 }) {
     if (embedding.length !== EMBEDDING_LENGTH) {
       throw new Error(`Embedding length should be ${EMBEDDING_LENGTH}`);
     }
 
     const result = await this.sequelize.query(
-      `SELECT "id", "library", "document", "sequence", "wordCount", "text", "start", "end", COSINE_DISTANCE(embedding, :embedding) AS distance
-        FROM "Chunk"
-        WHERE "library" = :library AND "modelName" = :modelName
+      `SELECT
+          "Chunk"."id", "libraryId", "documentId", "sequence", "wordCount", "text", "start", "end",
+          COSINE_DISTANCE(embedding, :embedding) AS distance,
+          "Document"."title", "Document"."url"
+        FROM "Chunk" JOIN "Document" ON "documentId" = "Document"."id"
+        WHERE "libraryId" = :libraryId AND "modelName" = :modelName
         ORDER BY distance ASC
         LIMIT :limit;
       `,
       {
-        replacements: { library, modelName, embedding: `[${embedding}]`, limit },
+        replacements: { libraryId, modelName, embedding: `[${embedding}]`, limit },
         type: this.sequelize.QueryTypes.SELECT,
         raw: true
       }
@@ -76,7 +74,7 @@ export class Chunk extends Model {
     timestamps: false,
     indexes: [
       {
-        fields: [ 'wordCount', 'library', 'document', 'modelName', 'sequence' ],
+        fields: [ 'wordCount', 'documentId', 'modelName', 'sequence' ],
         unique: true
       },
       {

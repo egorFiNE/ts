@@ -169,7 +169,7 @@
             :data-index="index"
             :item="item"
             :class="{ '!opacity-70': prevSearch != search }"
-            @play="jumpTo(item)"
+            @play="play(item)"
           />
         </transition-group>
 
@@ -199,7 +199,7 @@ import CopyToClipboard from './CopyToClipboard.vue';
 import SearchItem from './SearchItem.vue';
 import AlertModal from './AlertModal.vue';
 import VideoModal from './VideoModal.vue';
-import { ref, shallowRef, watch, onMounted } from 'vue';
+import { ref, shallowRef, watch } from 'vue';
 import { useFetch } from '@vueuse/core';
 import gsap from 'gsap';
 import { models, isErrorState } from '../useModels';
@@ -260,6 +260,11 @@ if (!modelName.value) {
 
 async function share() {
   isShareButtonEnabled.value = false;
+
+  if (props.shareId) {
+    shareUrl.value = document.location.href;
+    return;
+  }
 
   const { data } = await useFetch('/api/share/', {
     method: 'POST',
@@ -322,7 +327,7 @@ async function doSearch() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      library: 1, // FIXME: add real library Id
+      libraryId: 1, // FIXME: add real library Id
       modelName: modelName.value,
       summaryModelName: summaryModelName.value,
       query: search.value
@@ -373,7 +378,7 @@ async function getSummary() {
   isShareButtonEnabled.value = true;
 }
 
-function jumpTo(item) {
+function play(item) {
   videoMadalRef.value.play(item);
 }
 
@@ -381,7 +386,7 @@ function showAlert(message) {
   alertModalRef.value.show(message);
 }
 
-onMounted(async () => {
+async function getShared() {
   if (!props.shareId) {
     return;
   }
@@ -401,11 +406,12 @@ onMounted(async () => {
   prevSearch.value = data.value.query;
   search.value = data.value.query;
 
-  shareUrl.value = document.location.href;
   isShareButtonEnabled.value = true;
 
   isInitialState.value = false;
-});
+}
+
+getShared();
 
 function onBeforeEnter(el) {
   el.style.opacity = 0;

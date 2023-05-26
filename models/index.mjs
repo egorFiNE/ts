@@ -1,6 +1,8 @@
 import { Sequelize } from 'sequelize';
 
 const { Chunk } = await import('./Chunk.model.mjs');
+const { Document } = await import('./Document.model.mjs');
+const { Library } = await import('./Library.model.mjs');
 const { Search } = await import('./Search.model.mjs');
 
 const options = {
@@ -28,7 +30,7 @@ export async function init() {
 
   }
 
-  [ Chunk, Search ].forEach(table => table.init(table.structure, { ...table.options, sequelize }));
+  [ Chunk, Document, Library, Search ].forEach(table => table.init(table.structure, { ...table.options, sequelize }));
 
   await sequelize.sync();
 

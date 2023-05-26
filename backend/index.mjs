@@ -66,7 +66,7 @@ fastify.get('/api/models/', () => ({
 fastify.post('/api/search/', async request => {
   const summaryModelName = request.body.summaryModelName || 'gpt-3.5';
   const modelName = request.body.modelName || 'openai';
-  const library = request.body.library || 1;
+  const libraryId = request.body.libraryId || 1;
 
   const query = normalizeQuery(request.body.query);
   if (!query) {
@@ -96,7 +96,7 @@ fastify.post('/api/search/', async request => {
   const embeddingsResult = await getEmbeddings(modelName, query);
   const embedding = normalizeEmbedding(embeddingsResult[0]);
 
-  const searchResults = await search(configuration, library, embedding, modelName);
+  const searchResults = await search(configuration, libraryId, embedding, modelName);
 
   if (searchResults.length === 0) {
     return {
@@ -104,10 +104,6 @@ fastify.post('/api/search/', async request => {
       isEmpty: true
     };
   }
-
-  console.log('searchResults', searchResults)
-
-  searchResults.forEach(entry => entry.videoId = configuration.lectures[entry.document - 1]);
 
   const newRecord = await sequelize.models.Search.create({
     query,

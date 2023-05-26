@@ -94,9 +94,9 @@ function formatMilliseconds(ms) {
 }
 
 function play(item) {
-  videoId.value = item.videoId;
+  videoId.value = item.url;
   text.value = item.text;
-  title.value = `Class ${item.document}`;
+  title.value = item.title;
   timing.value = `${formatMilliseconds(item.start)}-${formatMilliseconds(item.end)}`;
   open.value = true;
 
