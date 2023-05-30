@@ -8,21 +8,25 @@ const routes = [
   {
     path: '/',
     component: MainPage,
+    name: 'libraryPage',
     props: true
   },
   {
     path: '/:section/',
     component: SearchPage,
+    name: 'documentPage',
     props: true
   },
   {
     path: '/:section/:shareId/',
     component: SearchPage,
+    name: 'documentSharePage',
     props: true
   },
   {
     path: '/about/',
-    component: AboutPage
+    component: AboutPage,
+    name: 'aboutPage'
   }
 ];
 

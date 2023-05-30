@@ -63,6 +63,18 @@ fastify.get('/api/models/', () => ({
   models: configuration.models
 }));
 
+fastify.get('/api/libraries/', async () => {
+  const libraries = await sequelize.models.Library.findAll({
+    order: [
+      ['createdAt', 'DESC']
+    ]
+  });
+  return {
+    success: true,
+    libraries
+  }
+});
+
 fastify.post('/api/search/', async request => {
   const summaryModelName = request.body.summaryModelName || 'gpt-3.5';
   const modelName = request.body.modelName || 'openai';

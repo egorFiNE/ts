@@ -32,7 +32,7 @@ export async function init() {
 
   [ Chunk, Document, Library, Search ].forEach(table => table.init(table.structure, { ...table.options, sequelize }));
 
-  await sequelize.sync();
+  await sequelize.sync({ alter: true });
 
   return sequelize;
 }

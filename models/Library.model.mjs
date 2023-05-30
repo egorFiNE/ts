@@ -10,10 +10,24 @@ export class Library extends Model {
     description: {
       type: Sequelize.DataTypes.STRING(5000),
       defaultValue: null
+    },
+
+    coverUrl: {
+      type: Sequelize.DataTypes.STRING(500),
+      defaultValue: null
+    },
+
+    slug: {
+      type: Sequelize.DataTypes.STRING(50),
+      allowNull: false,
+      defaultValue: ''
     }
+
   }
 
   static options = {
-    timestamps: false
+    timestamps: true,
+    createdAt:true,
+    updatedAt: false
   }
 }

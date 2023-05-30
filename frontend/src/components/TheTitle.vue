@@ -1,16 +1,12 @@
 <template>
   <div class="container py-8">
     <div class="relative">
-      Title
-      <!-- <div class="inline-block relative main-title text-yellow-400 text-shadow cursor-pointer" @click="getBack">
-        The Making of Modern Ukraine
-        <div class="absolute top-0 inset-y-0 overflow-hidden text-blue-500">
-          The Making of Modern Ukraine
-        </div>
+      <div class="inline-block relative main-title text-blue-500 text-shadow cursor-pointer" @click="getBack">
+        {{ title }}
       </div>
       <div class="main-subtitle text-slate-400 relative pt-3">
-        AI search on Prof. Tim Snyder's lectures at Yale
-      </div> -->
+        {{ description }}
+      </div>
       <the-links class="absolute top-1 right-0 hidden sm:flex" />
     </div>
   </div>
@@ -18,13 +14,22 @@
 
 <script setup>
 import TheLinks from './TheLinks.vue';
-// import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
-// const router = useRouter();
-// const emit = defineEmits([ 'reset' ]);
+const router = useRouter();
 
-// function getBack() {
-//   emit('reset');
-//   router.push('/');
-// }
+defineProps({
+  title: {
+    type: String,
+    default: 'AI Search Engine'
+  },
+  description: {
+    type: String,
+    default: ''
+  }
+});
+
+function getBack() {
+  router.push('/');
+}
 </script>
