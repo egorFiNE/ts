@@ -9,22 +9,22 @@
     "lint:fix": "eslint ./src --ext vue,js,mjs --fix"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.13",
+    "@headlessui/vue": "^1.7.14",
     "@tailwindcss/forms": "^0.5.3",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vueuse/core": "^10.1.2",
     "context-filter-polyfill": "^0.3.6",
     "cssnano": "^6.0.1",
-    "eslint": "^8.41.0",
+    "eslint": "^8.42.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-vue": "^9.14.0",
+    "eslint-plugin-vue": "^9.14.1",
     "gsap": "^3.11.5",
-    "postcss-preset-env": "^8.4.1",
+    "postcss-preset-env": "^8.4.2",
     "sass": "^1.62.1",
     "tailwindcss": "^3.3.2",
-    "vite": "^4.3.8",
+    "vite": "^4.3.9",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.1",
+    "vue-router": "^4.2.2",
     "vue3-ytframe": "^0.3.3"
   }
 }
