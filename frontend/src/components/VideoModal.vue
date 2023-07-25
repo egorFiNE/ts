@@ -26,14 +26,7 @@
           >
             <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-3xl sm:p-6">
               <div class="w-full aspect-video">
-                <VueYtframe
-                  ref="player"
-                  :key="videoId"
-                  :video-id="videoId"
-                  width="100%"
-                  :player-vars="{ autoplay: 0, listType: 'user_uploads' }"
-                  @ready="onPlayerReady"
-                />
+                <component :is="videoId ? videoPlayerComponent : 'div'" ref="player" :video-id="videoId" />
               </div>
               <div class="text-xs py-4">
                 <div class="text-xl font-medium text-slate-600 mb-2">
@@ -58,29 +51,24 @@
 </template>
 
 <script setup>
-import { shallowRef, ref, onBeforeUnmount } from 'vue';
+import { shallowRef, ref, watch } from 'vue';
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue';
+// import VideoPlayerYoutube from './VideoPlayerYoutube.vue';
+import VideoPlayerVimeo from './VideoPlayerVimeo.vue';
+
+const videoPlayerComponent = VideoPlayerVimeo;
 
 const open = shallowRef(false);
-const videoId = shallowRef(null);
 const text = shallowRef(null);
 const title = shallowRef(null);
 const timing = shallowRef(null);
+const videoId = shallowRef(null);
 
-const interval = ref(null);
 const player = ref(null);
-const onPlayerReady = ref(() => {});
 
 defineExpose({
   play
 });
-
-onBeforeUnmount(cleanup);
-
-function cleanup() {
-  clearInterval(interval.value);
-  interval.value = null;
-}
 
 function formatMilliseconds(ms) {
   const d1 = new Date();
@@ -94,40 +82,22 @@ function formatMilliseconds(ms) {
 }
 
 function play(item) {
-  console.log(item);
-  videoId.value = item.videoId;
   text.value = item.text;
   title.value = `Class ${item.lecture}`;
   timing.value = `${formatMilliseconds(item.start)}-${formatMilliseconds(item.end)}`;
+  videoId.value = item.videoId;
   open.value = true;
 
-  onPlayerReady.value = () => {
-    const realStart = Math.floor(item.start / 1000) - 2; // headstart
-    const realEnd = Math.ceil(item.end / 1000) + 2; // headstart
-
-    player.value.seekTo(realStart, true);
-    player.value.playVideo();
-
-    interval.value = setInterval(() => {
-      if (typeof player.value?.getCurrentTime !== 'function') {
-        return;
-      }
-
-      if (player.value.getCurrentTime() < realEnd) {
-        return;
-      }
-
-      clearInterval(interval.value);
-
-      player.value.pauseVideo();
-    }, 100);
-  };
+  const unwatch = watch(player, value => {
+    if (value) {
+      unwatch();
+      value.play(item);
+    }
+  });
 }
 
 function close() {
-  clearInterval(interval.value);
-
-  player.value.pauseVideo();
+  player.value.close();
   open.value = false;
   videoId.value = null;
   text.value = null;

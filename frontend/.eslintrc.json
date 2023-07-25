@@ -37,6 +37,7 @@
     "prefer-destructuring": "off",
     "import/prefer-default-export": "off",
     "import/no-relative-packages": "off",
+    "import/no-extraneous-dependencies": "off",
     "vue/max-attributes-per-line": [
       "error",
       {

@@ -1,14 +1,11 @@
 <template>
   <div class="container py-8">
     <div class="relative">
-      <div class="inline-block relative main-title text-yellow-400 text-shadow cursor-pointer" @click="getBack">
-        The Making of Modern Ukraine
-        <div class="absolute top-0 inset-y-0 overflow-hidden text-blue-500">
-          The Making of Modern Ukraine
-        </div>
+      <div class="inline-block relative main-titl text-shadow cursor-pointer" @click="getBack">
+        Atom
       </div>
       <div class="main-subtitle text-slate-400 relative pt-3">
-        AI search on Prof. Tim Snyder's lectures at Yale
+        AI search on ...
       </div>
       <the-links class="absolute top-1 right-0 hidden sm:flex" />
     </div>

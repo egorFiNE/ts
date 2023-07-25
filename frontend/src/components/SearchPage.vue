@@ -189,7 +189,7 @@
 
   <scroll-to-top />
 
-  <video-modal ref="videoMadalRef" />
+  <video-modal ref="videoModalRef" />
 
   <alert-modal ref="alertModalRef" />
 </template>
@@ -239,7 +239,7 @@ const results = ref([]);
 const summary = ref(null);
 const id = ref(null);
 
-const videoMadalRef = ref(null);
+const videoModalRef = ref(null);
 const alertModalRef = ref(null);
 
 const isLoading = shallowRef(false);
@@ -374,7 +374,7 @@ async function getSummary() {
 }
 
 function jumpTo(item) {
-  videoMadalRef.value.play(item);
+  videoModalRef.value.play(item);
 }
 
 function showAlert(message) {
