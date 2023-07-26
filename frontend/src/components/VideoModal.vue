@@ -80,7 +80,7 @@ function formatMilliseconds(ms) {
 
 function play(item) {
   text.value = item.text;
-  title.value = `Class ${item.lecture}`;
+  title.value = `Class ${item.videoId}`;
   timing.value = `${formatMilliseconds(item.start)}-${formatMilliseconds(item.end)}`;
   videoId.value = item.videoId;
   open.value = true;
