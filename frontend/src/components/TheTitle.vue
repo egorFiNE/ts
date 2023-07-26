@@ -5,7 +5,7 @@
         Atom
       </div>
       <div class="main-subtitle text-slate-400 relative pt-3">
-        AI search on ...
+        все очень круто, фп, пзрд, тврд, боже, вы просто сломаете сначала язык от этих слов
       </div>
       <the-links class="absolute top-1 right-0 hidden sm:flex" />
     </div>
