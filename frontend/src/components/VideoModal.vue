@@ -91,7 +91,6 @@ function formatMilliseconds(ms) {
 }
 
 function play(item) {
-  console.log(item);
   videoId.value = item.videoId;
   text.value = item.text;
   title.value = `Class ${item.lecture}`;
