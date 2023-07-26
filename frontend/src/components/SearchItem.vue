@@ -25,6 +25,10 @@
 </template>
 
 <script setup>
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration.js';
+dayjs.extend(duration);
+
 defineProps({
   item: {
     type: Object,
@@ -35,14 +39,7 @@ defineProps({
 const emit = defineEmits([ 'play' ]);
 
 function formatMilliseconds(ms) {
-  const d1 = new Date();
-  const msShift = d1.getTimezoneOffset() * 60 * 1000;
-  const d = new Date(0);
-  d.setUTCMilliseconds(ms + msShift);
-
-  const hoursLine = d.getHours() > 0 ? (d.getHours() + 'h') : '';
-
-  return hoursLine + String(d.getMinutes()) + 'm' + String(d.getSeconds()) + 's';
+  return dayjs.duration(ms).format('HH:mm:ss');
 }
 
 function play() {
