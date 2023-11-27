@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,23 +10,23 @@
     "lint:fix": "eslint ./src --ext vue,js,mjs --fix"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.14",
-    "@tailwindcss/forms": "^0.5.4",
-    "@vitejs/plugin-vue": "^4.2.3",
-    "@vueuse/core": "^10.2.1",
+    "@headlessui/vue": "^1.7.16",
+    "@tailwindcss/forms": "^0.5.7",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "@vueuse/core": "^10.6.1",
     "context-filter-polyfill": "^0.3.6",
     "cssnano": "^6.0.1",
-    "dayjs": "^1.11.9",
-    "eslint": "^8.45.0",
+    "dayjs": "^1.11.10",
+    "eslint": "^8.54.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-vue": "^9.15.1",
+    "eslint-plugin-vue": "^9.18.1",
     "gsap": "^3.12.2",
-    "postcss-preset-env": "^9.1.0",
-    "sass": "^1.64.1",
-    "tailwindcss": "^3.3.3",
-    "vite": "^4.4.7",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.4",
-    "vue3-ytframe": "^0.3.3"
+    "postcss-preset-env": "^9.3.0",
+    "sass": "^1.69.5",
+    "tailwindcss": "^3.3.5",
+    "vite": "^5.0.2",
+    "vue": "^3.3.9",
+    "vue-router": "^4.2.5",
+    "vue3-ytframe": "^0.4.0"
   }
 }
