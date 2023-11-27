@@ -64,7 +64,7 @@ fastify.get('/api/models/', () => ({
 }));
 
 fastify.post('/api/search/', async request => {
-  const summaryModelName = request.body.summaryModelName || 'gpt-3.5';
+  const summaryModelName = /*request.body.summaryModelName ||*/ 'gpt-3.5-turbo';
   const modelName = request.body.modelName || 'openai';
 
   const query = normalizeQuery(request.body.query);
